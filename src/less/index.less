@@ -1,6 +1,43 @@
-@bg: #444;
+* { font-family: raleway; font-size: 13px; }
 
 body {
-	background: @bg;
-	margin: 0 0; padding: 0 0;
+  background: linear-gradient(to right bottom, #FF495F, #FFDA2F, #FFDF80, #76FFE9, #5D3EFF);
+  margin: 0 0;
+  padding: 0 0;
+}
+
+.onetweet {
+  background: rgba(0, 0, 0, 0.7);
+  float: left;
+  .main-a { position: absolute; }
+  .picture {
+    float: left;
+    margin-left: 10px;
+    margin-right: 5px;
+    img { border-radius: 36%; }
+  }
+  .arrowsvg { float: left; }
+  .txt {
+    margin-left: 87px;
+    background: black;
+    color: #ccc;
+    text-decoration: none;
+    .text { margin: 0 0 5px 0; }
+    .name {
+      margin: 0 0;
+      font-weight: bolder;
+      a {
+        text-decoration: none;
+        color: #1A92C4;
+      }
+    }
+  }
+  .hashtag {
+    color: #6FD1D3;
+    a {
+      color: #008199;
+      text-decoration: none;
+      font-style: italic;
+    }
+  }
 }

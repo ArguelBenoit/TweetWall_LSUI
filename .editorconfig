@@ -25,3 +25,8 @@ indent_size = 2
 e4x = true
 indent_style = space
 indent_size = 2
+
+[**.less]
+e4x = true
+indent_style = space
+indent_size = 2

@@ -12,23 +12,40 @@ const Tweet = (props) => {
   function getTweetText() {
     return {__html: text};
   }
-  return <div>
-    <a href={tweetUrl} target="_blank">
-      <div className="tweet">
-        <div className="picture">
-          <div className="pictureContent">
-            <img src={profilePicture}/>
-          </div>
-        </div>
-        <div className="content-text">
-          <div className="tweet-text">
-            <p className="name"><a href={userUrl} target="_blank">@{props.user.name}</a>
-            </p>
-            <p className="text" dangerouslySetInnerHTML={getTweetText()}/>
-          </div>
-        </div>
+  const heightTweet = ( window.innerHeight / 11 ) - 1;
+  const widthTweet = ( window.innerWidth / 5 ) - 1;
+  const styleOnetweet = {
+    width: widthTweet,
+    height: heightTweet,
+    margin: 0.5
+  }
+  const styleTxt = {
+    height: heightTweet
+  }
+  const stylePicture = {
+    marginTop: ( heightTweet - 48 ) / 2
+  }
+  const styleA = {
+    width: widthTweet,
+    height: heightTweet
+  }
+
+  // var trololo = document.getElementById("txt").offsetHeight;
+  // console.log(trololo);
+
+  return <div className="onetweet" style={styleOnetweet}>
+    <a href={tweetUrl} target="_blank" className="main-a" style={styleA}></a>
+    <div className="tweet">
+      <div className="picture" style={stylePicture}>
+        <img src={profilePicture}/>
       </div>
-    </a>
+      <img className="arrowsvg" src="img/arrow.svg" width="30px" height={heightTweet} />
+      <div id="txt" style={styleTxt} className="txt">
+        <p className="name"><a href={userUrl} target="_blank">@{props.user.name}</a>
+        </p>
+        <p className="text" dangerouslySetInnerHTML={getTweetText()}/>
+      </div>
+    </div>
   </div>;
 };
 
