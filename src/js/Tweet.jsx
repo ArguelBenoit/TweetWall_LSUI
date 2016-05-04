@@ -12,8 +12,18 @@ const Tweet = (props) => {
   function getTweetText() {
     return {__html: text};
   }
-  const heightTweet = ( window.innerHeight / 11 ) - 1;
-  const widthTweet = ( window.innerWidth / 5 ) - 1;
+
+  const heightVp = window.innerHeight;
+  const widthVp = window.innerWidth;
+
+  var mainHeight = ( heightVp / 80 );
+  var twNbrHeight = Math.round(mainHeight);
+  const heightTweet = ( heightVp / twNbrHeight ) - 1;
+  
+  var mainWidth = ( widthVp / 350 );
+  var twNbrWidth = Math.round(mainWidth);
+  const widthTweet = ( widthVp / twNbrWidth ) - 1;
+
   const styleOnetweet = {
     width: widthTweet,
     height: heightTweet,
@@ -51,13 +61,12 @@ const Tweet = (props) => {
 
 Tweet.propTypes = {
   index: PropTypes.number,
-  bootstrapWidth: PropTypes.string,
-  bootstrapOffset: PropTypes.string,
   pictureSize: PropTypes.string,
   user: PropTypes.object.isRequired,
   entities: PropTypes.object.isRequired,
   text: PropTypes.string,
-  _source: PropTypes.string
+  twNbrHeight: PropTypes.number,
+  twNbrWidth: PropTypes.number
 };
 
 export default Tweet;
