@@ -15,19 +15,21 @@ const Tweet = (props) => {
 
   const heightVp = window.innerHeight;
   const widthVp = window.innerWidth;
+  const mainHeight = 120;
+  const mainWidth = 400;
 
-  var mainHeight = ( heightVp / 80 );
-  var twNbrHeight = Math.round(mainHeight);
-  const heightTweet = ( heightVp / twNbrHeight ) - 1;
+  var twNbrHeightFir = ( heightVp / mainHeight );
+  var twNbrHeight = Math.round(twNbrHeightFir);
+  const heightTweet = ( heightVp / twNbrHeight ) - 2;
   
-  var mainWidth = ( widthVp / 350 );
-  var twNbrWidth = Math.round(mainWidth);
-  const widthTweet = ( widthVp / twNbrWidth ) - 1;
+  var twNbrWidthFir = ( widthVp / mainWidth );
+  var twNbrWidth = Math.round(twNbrWidthFir);
+  const widthTweet = ( widthVp / twNbrWidth ) - 2;
 
   const styleOnetweet = {
     width: widthTweet,
     height: heightTweet,
-    margin: 0.5
+    margin: 1
   }
   const styleTxt = {
     height: heightTweet

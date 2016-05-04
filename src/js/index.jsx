@@ -10,29 +10,27 @@ import TweetWall from './TweetWall.jsx';
 import Tweet from './Tweet.jsx';
 import {parse as parseQuery} from 'querystring';
 
-const streamId = 'nutella';//'d8eeba3a';
+const streamId = 'd8eeba3a';
 
 const reducers = {
   wall: wallReducer
 };
-
 const store = createStore(combineReducers(reducers), undefined, compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-store.dispatch(setSize(55));
+store.dispatch(setSize(40));
 
 setTimeout(() => {
   store.dispatch(fetchHistory(streamId, {
-    hostname: 'hq.tweetping.net'
+    hostname: 'www.tweetping.net'
   }));
 });
 
 connect(streamId, 'wall', (post) => {
   store.dispatch(aggregate(post));
-  console.log(post);
-}, 'wss://hq.tweetping.net/');
+}, 'wss://tweetping.net/');
 
 
 
