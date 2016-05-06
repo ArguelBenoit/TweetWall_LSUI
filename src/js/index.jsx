@@ -15,12 +15,27 @@ const streamId = 'd8eeba3a';
 const reducers = {
   wall: wallReducer
 };
+
 const store = createStore(combineReducers(reducers), undefined, compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-store.dispatch(setSize(40));
+
+const heightViewport = window.innerHeight;
+const widthViewport = window.innerWidth;
+const mainHeight = 110;
+const mainWidth = 500;
+
+var twNbrHeightFir = ( heightViewport / mainHeight );
+var twNbrHeight = Math.round(twNbrHeightFir);
+const heightTweet = ( heightViewport / twNbrHeight ) - 8;
+
+var twNbrWidthFir = ( widthViewport / mainWidth );
+var twNbrWidth = Math.round(twNbrWidthFir);
+const widthTweet = ( widthViewport / twNbrWidth ) - 8;
+
+store.dispatch(setSize(twNbrHeight*twNbrWidth));
 
 setTimeout(() => {
   store.dispatch(fetchHistory(streamId, {
@@ -32,11 +47,13 @@ connect(streamId, 'wall', (post) => {
   store.dispatch(aggregate(post));
 }, 'wss://tweetping.net/');
 
+const attributes = {
+  store,
+  widthTweet,
+  heightTweet
+};
 
-
-ReactDOM.render(<Provider store={store}>
-  <div>
-    <TweetWall />
-  </div>
-</Provider>, document.getElementById('content'));
-
+ReactDOM.render(
+  <TweetWall {...attributes} />,
+  document.getElementById('widget')
+);

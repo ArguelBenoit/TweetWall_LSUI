@@ -13,23 +13,23 @@ const Tweet = (props) => {
     return {__html: text};
   }
 
-  const heightVp = window.innerHeight;
-  const widthVp = window.innerWidth;
-  const mainHeight = 120;
-  const mainWidth = 400;
+  const heightViewport = window.innerHeight;
+  const widthViewport = window.innerWidth;
+  const mainHeight = 110;
+  const mainWidth = 500;
 
-  var twNbrHeightFir = ( heightVp / mainHeight );
+  var twNbrHeightFir = ( heightViewport / mainHeight );
   var twNbrHeight = Math.round(twNbrHeightFir);
-  const heightTweet = ( heightVp / twNbrHeight ) - 2;
-  
-  var twNbrWidthFir = ( widthVp / mainWidth );
+  const heightTweet = ( heightViewport / twNbrHeight ) - 8;
+
+  var twNbrWidthFir = ( widthViewport / mainWidth );
   var twNbrWidth = Math.round(twNbrWidthFir);
-  const widthTweet = ( widthVp / twNbrWidth ) - 2;
+  const widthTweet = ( widthViewport / twNbrWidth ) - 8;
 
   const styleOnetweet = {
     width: widthTweet,
     height: heightTweet,
-    margin: 1
+    margin: 3
   }
   const styleTxt = {
     height: heightTweet
@@ -41,9 +41,6 @@ const Tweet = (props) => {
     width: widthTweet,
     height: heightTweet
   }
-
-  // var trololo = document.getElementById("txt").offsetHeight;
-  // console.log(trololo);
 
   return <div className="onetweet" style={styleOnetweet}>
     <a href={tweetUrl} target="_blank" className="main-a" style={styleA}></a>
@@ -66,9 +63,6 @@ Tweet.propTypes = {
   pictureSize: PropTypes.string,
   user: PropTypes.object.isRequired,
   entities: PropTypes.object.isRequired,
-  text: PropTypes.string,
-  twNbrHeight: PropTypes.number,
-  twNbrWidth: PropTypes.number
+  text: PropTypes.string
 };
-
 export default Tweet;

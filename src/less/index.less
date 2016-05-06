@@ -7,11 +7,11 @@ body {
   overflow: hidden;
 }
 
-
 .onetweet {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
   animation: 0.5s twstart;
   float: left;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   @keyframes twstart {
     from {
       transform: scale(1.2);
@@ -27,8 +27,8 @@ body {
   .main-a { position: absolute; }
   .picture {
     float: left;
-    margin-left: 15px;
-    margin-right: 5px;
+    margin-left: 23px;
+    margin-right: 10px;
     img {
       border-radius: 36%;
     }
@@ -37,8 +37,8 @@ body {
     float: left;
   }
   .txt {
-    margin-left: 83px;
-    background: linear-gradient(to right, black, rgba(0, 0, 0, 0.5));
+    margin-left: 105px;
+    background: linear-gradient(to right, black, rgba(0, 0, 0, 0.6));
     color: #ccc;
     text-decoration: none;
     .text { margin: 0 0 5px 0; }
@@ -51,14 +51,13 @@ body {
         color: #1A92C4;
       }
     }
-  }
-
-  .hashtag {
-    color: #6FD1D3;
-    a {
-      color: #008199;
-      text-decoration: none;
-      font-style: italic;
+    .hashtag {
+      color: #6FD1D3;
+      a {
+        color: #008199;
+        text-decoration: none;
+        font-style: italic;
+      }
     }
   }
 }
