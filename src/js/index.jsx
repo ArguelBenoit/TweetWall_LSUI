@@ -21,7 +21,6 @@ const store = createStore(combineReducers(reducers), undefined, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-
 const heightViewport = window.innerHeight;
 const widthViewport = window.innerWidth;
 const mainHeight = 110;

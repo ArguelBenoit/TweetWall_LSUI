@@ -1,8 +1,10 @@
 import React, {PropTypes} from 'react';
 import formatTweetText from './formatter';
+import TweetWall from './TweetWall.jsx';
 
 const Tweet = (props) => {
   const userUrl = `https://twitter.com/${props.user.name}`;
+  const {heightTweet, widthTweet} = props;
   const tweetUrl = userUrl + '/status/' + props.id;
   const text = formatTweetText(props.text, props.entities);
   const profilePicture = props.pictureSize ?
@@ -12,19 +14,6 @@ const Tweet = (props) => {
   function getTweetText() {
     return {__html: text};
   }
-
-  const heightViewport = window.innerHeight;
-  const widthViewport = window.innerWidth;
-  const mainHeight = 110;
-  const mainWidth = 500;
-
-  var twNbrHeightFir = ( heightViewport / mainHeight );
-  var twNbrHeight = Math.round(twNbrHeightFir);
-  const heightTweet = ( heightViewport / twNbrHeight ) - 8;
-
-  var twNbrWidthFir = ( widthViewport / mainWidth );
-  var twNbrWidth = Math.round(twNbrWidthFir);
-  const widthTweet = ( widthViewport / twNbrWidth ) - 8;
 
   const styleOnetweet = {
     width: widthTweet,

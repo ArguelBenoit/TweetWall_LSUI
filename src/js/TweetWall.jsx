@@ -4,9 +4,11 @@ import wallSelector from 'redux-ping/lib/selectors/wall';
 import Tweet from './Tweet.jsx';
 
 const TweetWall = (props) => {
+  const {heightTweet, widthTweet} = props;
   const tweets = props.wall;
+  console.log(heightTweet);
   return <div className="wall container">
-    {tweets.map((item, i) => <Tweet key={item._id} index={i} {...item} />)}
+    {tweets.map((item, i) => <Tweet widthTweet={widthTweet} heightTweet={heightTweet} key={item._id} index={i} {...item} />)}
   </div>;
 };
 
