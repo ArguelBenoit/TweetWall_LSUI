@@ -19,17 +19,17 @@ const Tweet = (props) => {
     width: widthTweet,
     height: heightTweet,
     margin: 3
-  }
+  };
   const styleTxt = {
     height: heightTweet
-  }
+  };
   const stylePicture = {
     marginTop: ( heightTweet - 48 ) / 2
-  }
+  };
   const styleA = {
     width: widthTweet,
     height: heightTweet
-  }
+  };
 
   return <div className="onetweet" style={styleOnetweet}>
     <a href={tweetUrl} target="_blank" className="main-a" style={styleA}></a>

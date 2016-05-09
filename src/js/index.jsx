@@ -9,8 +9,10 @@ import { Provider } from 'react-redux';
 import TweetWall from './TweetWall.jsx';
 import Tweet from './Tweet.jsx';
 import {parse as parseQuery} from 'querystring';
+import debounce from 'lodash';
 
 const streamId = 'd8eeba3a';
+const hostName = 'www.tweetping.net';
 
 const reducers = {
   wall: wallReducer
@@ -21,24 +23,55 @@ const store = createStore(combineReducers(reducers), undefined, compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-const heightViewport = window.innerHeight;
-const widthViewport = window.innerWidth;
-const mainHeight = 110;
-const mainWidth = 500;
+var mainHeight = 110;
+var mainWidth = 500;
+var widthViewport = window.innerWidth;
+var heightViewport = window.innerHeight;
 
 var twNbrHeightFir = ( heightViewport / mainHeight );
 var twNbrHeight = Math.round(twNbrHeightFir);
-const heightTweet = ( heightViewport / twNbrHeight ) - 8;
+var heightTweet = ( heightViewport / twNbrHeight ) - 8;
 
 var twNbrWidthFir = ( widthViewport / mainWidth );
 var twNbrWidth = Math.round(twNbrWidthFir);
-const widthTweet = ( widthViewport / twNbrWidth ) - 8;
+var tweetNumber = twNbrHeight*twNbrWidth;
+var widthTweet = ( widthViewport / twNbrWidth ) - 8;
 
 store.dispatch(setSize(twNbrHeight*twNbrWidth));
 
+function reSize() {
+
+  var widthViewport = window.innerWidth;
+  var heightViewport = window.innerHeight;
+
+  var twNbrHeightFir = ( heightViewport / mainHeight );
+  var twNbrHeight = Math.round(twNbrHeightFir);
+  var heightTweet = ( heightViewport / twNbrHeight ) - 8;
+
+  var twNbrWidthFir = ( widthViewport / mainWidth );
+  var twNbrWidth = Math.round(twNbrWidthFir);
+  var widthTweet = ( widthViewport / twNbrWidth ) - 8;
+
+  if ( twNbrHeight*twNbrWidth > tweetNumber ) {
+    store.dispatch(setSize(twNbrHeight*twNbrWidth));
+    setTimeout(() => {
+      store.dispatch(fetchHistory(streamId, {
+        hostname: hostName
+      }));
+    });
+  }
+
+  ReactDOM.render(
+    <TweetWall widthTweet={widthTweet} heightTweet={heightTweet} />,
+    document.getElementById('widget')
+  );
+}
+
+window.addEventListener('resize', _.debounce(reSize, 150));
+
 setTimeout(() => {
   store.dispatch(fetchHistory(streamId, {
-    hostname: 'www.tweetping.net'
+    hostname: hostName
   }));
 });
 
