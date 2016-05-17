@@ -9,7 +9,7 @@ const TweetWall = (props) => {
   console.log(tweets);
   return <div className="wall container">
     {tweets.map((item, i) => <Tweet widthTweet={widthTweet} heightTweet={heightTweet} key={item._id} index={i} {...item} />)}
-  </div>;
+  </div>
 };
 
 TweetWall.propTypes = {

@@ -64,7 +64,7 @@ function reSize() {
   );
 }
 
-window.addEventListener('resize', _.debounce(reSize, 150));
+window.addEventListener('resize', debounce(reSize, 150));
 
 setTimeout(() => {
   store.dispatch(fetchHistory(streamId, {

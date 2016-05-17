@@ -22,9 +22,7 @@
     "watchify": "^3.7.0"
   },
   "devDependencies": {
-    "eslint": "^2.9.0",
-    "eslint-config-lightstream": "^1.0.2",
-    "eslint-plugin-react": "^5.0.1"
+    "eslint-config-lightstream": "^1.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
