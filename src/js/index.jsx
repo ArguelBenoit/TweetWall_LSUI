@@ -5,14 +5,11 @@ import wallReducer from 'redux-ping/lib/reducers/wall';
 import { aggregate, setSize, fetchHistory } from 'redux-ping/lib/actions/wall';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Provider } from 'react-redux';
 import TweetWall from './TweetWall.jsx';
-import Tweet from './Tweet.jsx';
-import {parse as parseQuery} from 'querystring';
 import debounce from 'lodash';
 
-const streamId = 'd8eeba3a';
-const hostName = 'www.tweetping.net';
+const streamId = 'nutella';
+const hostName = 'hq.tweetping.net';
 
 const reducers = {
   wall: wallReducer

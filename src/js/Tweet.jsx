@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import formatTweetText from './formatter';
-import TweetWall from './TweetWall.jsx';
 
 const Tweet = (props) => {
   const userUrl = `https://twitter.com/${props.user.name}`;
@@ -48,6 +47,8 @@ const Tweet = (props) => {
 };
 
 Tweet.propTypes = {
+  heightTweet: PropTypes.number,
+  widthTweet: PropTypes.number,
   index: PropTypes.number,
   pictureSize: PropTypes.string,
   user: PropTypes.object.isRequired,
